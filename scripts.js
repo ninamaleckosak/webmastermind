@@ -31,7 +31,7 @@ class MastermindGame {
                 result.push('+');
                 guessCopy[i] = null;
                 codeCopy[i] = null;
-                //compares same code same place between secret code and the guess -- removes that index if so
+                compares same code same place between secret code and the guess -- removes that index if so
             }
         }
 
@@ -41,14 +41,14 @@ class MastermindGame {
                 if (foundIndex !== -1) {
                     result.push('x');
                     codeCopy[foundIndex] = null;
-                    //checks for right color right place and if so removes it from the code
+                    checks for right color right place and if so removes it from the code
                 }
             }
         }
 
         while (result.length < 4) {
             result.push('-');
-            //fills the empty spaces
+            fills the empty spaces
         }
 
         return result;
@@ -59,7 +59,7 @@ class MastermindGame {
         if (guess.length < 4) {
             alert("Please fill all color boxes before checking the guess.");
             return;
-            //if the user leaves a white box, alerts them
+            if the user leaves a white box, alerts them
         }
 
         const result = this.evaluateGuess(guess);
@@ -78,7 +78,7 @@ class MastermindGame {
             alert("Congratulations! You guessed the code!");
             this.resetGame();
         }
-        //if they get them all right, there's a popup and the game resets
+        if they get them all right, there's a popup and the game resets
     }
 
     addToGuessLog(guess, result) {
@@ -87,13 +87,13 @@ class MastermindGame {
         const guessText = document.createTextNode(`Guess: ${guess.join(', ')} - Result: ${result.join('')}`);
         guessItem.appendChild(guessText);
         guessLog.appendChild(guessItem);
-        //adds the previous guess and result to the list
+        adds the previous guess and result to the list
     }
 
     resetGame() {
         this.currentGuess = [];
         this.pastGuess = [];
-        this.secretCode = null; // Reset the secret code
+        this.secretCode = null; 
         document.querySelectorAll('.color-box').forEach(box => {
             box.className = 'color-box';
         });
