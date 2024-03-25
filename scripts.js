@@ -34,18 +34,10 @@ function evaluateGuess(guess) {
     }
 
     for (let i = 0; i < guessCopy.length; i++) {
-        if (codeCopy.includes(guessCopy[i])) {
-            result.push('x');
-            guessCopy[i] = null;
-            codeCopy[codeCopy.indexOf(guessCopy[i])] = null;
-        }
-    }
-
-    for (let i = 0; i < guessCopy.length; i++) {
         if (guessCopy[i] !== null) {
             const foundIndex = codeCopy.indexOf(guessCopy[i]);
             if (foundIndex !== -1) {
-                result.push('-');
+                result.push('x');
                 codeCopy[foundIndex] = null; 
             }
         }
