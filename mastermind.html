@@ -8,15 +8,15 @@
 </head>
 <body>
     <h1>Mastermind!</h1>
-    <button onclick="generateSecretCode()">Begin Game</button>
+    <button onclick="MastermindGame.generateSecretCode()">Begin Game</button>
     <div id="game-container">
         <div id="guess-input" class="center">
-            <div class="color-box" id="guess1" onclick="selectColor(this)"></div>
-            <div class="color-box" id="guess2" onclick="selectColor(this)"></div>
-            <div class="color-box" id="guess3" onclick="selectColor(this)"></div>
-            <div class="color-box" id="guess4" onclick="selectColor(this)"></div>
-            <button onclick="checkGuess()">Check Guess</button>
-            <button onclick="resetGame()">Reset Game</button>
+            <div class="color-box" id="guess1" onclick="Colorbox.selectColor(this)"></div>
+            <div class="color-box" id="guess2" onclick="Colorbox.selectColor(this)"></div>
+            <div class="color-box" id="guess3" onclick="Colorbox.selectColor(this)"></div>
+            <div class="color-box" id="guess4" onclick="Colorbox.selectColor(this)"></div>
+            <button onclick="MastermindGame.checkGuess()">Check Guess</button>
+            <button onclick="MastermindGame.resetGame()">Reset Game</button>
         </div>
         <div id="result" class="center"></div>
         <div id="guess-log" class="center">
