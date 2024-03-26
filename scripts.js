@@ -10,6 +10,7 @@ class MastermindGame {
         for (let i = 0; i < 4; i++) {
             this.secretCode.push(Math.floor(Math.random() * 6) + 1);
         }
+        //generates 4 secret numbers to represent colors
         console.log("Secret Code:", this.secretCode);
     }
 
@@ -17,6 +18,7 @@ class MastermindGame {
         if (!this.secretCode) {
             alert("Secret code is not generated yet.");
             return [];
+            //alerts the user if they make a guess before they press begin game to generate the code
         }
 
         const result = [];
@@ -26,6 +28,7 @@ class MastermindGame {
         for (let i = 0; i < guessCopy.length; i++) {
             if (guessCopy[i] === codeCopy[i]) {
                 result.push('+');
+                //adds symbol to result if the code colors and positions map, then removes them so they aren't counted again
                 guessCopy[i] = null;
                 codeCopy[i] = null;
             }
@@ -36,6 +39,7 @@ class MastermindGame {
                 const foundIndex = codeCopy.indexOf(guessCopy[i]);
                 if (foundIndex !== -1) {
                     result.push('x');
+                    //adds result just if the color is right, then removes it from the code
                     codeCopy[foundIndex] = null;
                 }
             }
@@ -43,6 +47,7 @@ class MastermindGame {
 
         while (result.length < 4) {
             result.push('-');
+            //adds - to fill empty space
         }
 
         return result;
@@ -51,6 +56,7 @@ class MastermindGame {
     checkGuess() {
         const guess = this.currentGuess.slice();
         if (guess.length < 4) {
+            //makes sure all boxes have been pressed
             alert("Please fill all color boxes before checking the guess.");
             return;
         }
@@ -68,6 +74,7 @@ class MastermindGame {
         this.addToGuessLog(guess, result);
 
         if (result.every(symbol => symbol === '+')) {
+            //checks if the code is correct
             alert("Congratulations! You guessed the code!");
             this.resetGame();
         }
@@ -84,12 +91,14 @@ class MastermindGame {
     resetGame() {
         this.currentGuess = [];
         this.pastGuess = [];
-        this.secretCode = null; // Reset the secret code
+        this.secretCode = null; 
+        //resets everything
         document.querySelectorAll('.color-box').forEach(box => {
             box.className = 'color-box';
         });
         document.getElementById("result").innerHTML = "";
         document.getElementById("guess-list").innerHTML = "";
+        //everything is blank now
     }
 }
 
@@ -106,12 +115,15 @@ class ColorBox {
     selectColor(colorBox) {
         const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
         const currentColor = colorBox.className.split(' ')[1];
+        //gives a list of colors in order
 
         let currentIndex = colors.indexOf(currentColor);
         if (currentIndex === -1) currentIndex = 0;
+        //indexes the colors
 
         const nextColor = colors[(currentIndex + 1) % colors.length];
         colorBox.className = 'color-box ' + nextColor;
+        //cycles to next color
         this.updateCurrentGuess();
     }
 
@@ -122,6 +134,7 @@ class ColorBox {
             const color = colorBox.className.split(' ')[1];
             const colorIndex = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'].indexOf(color);
             this.mastermindGame.currentGuess.push(colorIndex + 1);
+            //changes the colors of the box
         });
     }
 }
