@@ -134,7 +134,7 @@ class ColorBox {
             const color = colorBox.className.split(' ')[1];
             const colorIndex = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'].indexOf(color);
             this.mastermindGame.currentGuess.push(colorIndex + 1);
-            //changes the colors of the box
+            //puts the color's index into the system
         });
     }
 }
